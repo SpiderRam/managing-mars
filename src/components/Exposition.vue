@@ -11,27 +11,25 @@
             >.
         </p>
         <p>
-            This styling is also basically a rip off of the Vue boilerplate code
-            created by the CLI.
+            This text styling is also basically a rip off of the Vue "Hello
+            World" code created by the CLI.
         </p>
         <p>
             And furthermore, this is a recycled homework assignment from my
             coding bootcamp. Is there anything worth seeing here?
         </p>
         <p>
-            I don't know, but it was fun. And the game is stupid but you could
-            be wasting time far less productively on the interwebs, so enjoy!
+            Well, if you saw the first one, you'd know this is a definite
+            improvement. Took me a minute to figure out that more is less in UI.
+        </p>
+        <p>
+            And the game is stupid but you could be wasting time far less
+            productively on the interwebs, so enjoy!
         </p>
         <p>
             But seriously, if you haven't played the real game, get some friends
-            together and play it, you will not be sorry. I recommend all of the
-            expansions.
+            together and play it, you will not be sorry.
         </p>
-        <p>
-            Well, except Turmoil, but that's because I got it right before COVID
-            hit and I haven't had a chance to play a full game yet.
-        </p>
-        <p>Microbes are far more beneficial in the game....</p>
         <p>Rules:</p>
         <ul>
             <li>You have a goal to reach, but not exceed.</li>
@@ -39,6 +37,11 @@
                 Click on the resources that can help you in that endeavor, each
                 has a numerical value.
             </li>
+            <li>
+                You have to figure out what each resource is worth, every game
+                the value is different.
+            </li>
+            <li>Not all games are winnable.</li>
             <li>Told you it was stupid.</li>
         </ul>
     </div>
@@ -65,6 +68,9 @@ h3 {
 ul {
     list-style-type: none;
     padding: 0;
+    width: 80vw;
+    min-width: 375px;
+    margin: 0 auto;
 }
 li {
     display: inline-block;
