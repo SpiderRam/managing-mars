@@ -13,10 +13,11 @@ export default {
     props: {
         filename: String,
         altText: String,
+        resourceVal: Number,
     },
     data: function() {
         return {
-            resourceVal: Math.floor(Math.random() * 11 + 1),
+            // resourceVal: Math.floor(Math.random() * 11 + 1),
         };
     },
 };

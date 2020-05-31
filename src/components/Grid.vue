@@ -1,16 +1,31 @@
 <template>
     <div id="gridWrapper">
-        <div class="row single solid">
+        <div class="row single solid top" @click="startNewGame">
             <p>Click here to start a new game</p>
         </div>
         <div class="row">
             <Resource
-                v-on:add-to-current="current += $event"
+                v-if="status === 'ready'"
+                v-bind:resourceVal="val1"
+                v-on:add-to-current="addResource"
                 filename="mars-plants.png"
                 altText="Mars plant production symbol"
             ></Resource>
             <Resource
-                v-on:add-to-current="current += $event"
+                v-else
+                filename="mars-plants.png"
+                altText="Mars plant production symbol"
+            ></Resource>
+            <!-- ~~~~~~~~~~~~~~~ -->
+            <Resource
+                v-if="status === 'ready'"
+                v-bind:resourceVal="val2"
+                v-on:add-to-current="addResource"
+                filename="mars-titanium.png"
+                altText="Mars titanium production symbol"
+            ></Resource>
+            <Resource
+                v-else
                 filename="mars-titanium.png"
                 altText="Mars titanium production symbol"
             ></Resource>
@@ -25,17 +40,32 @@
         </div>
         <div class="row">
             <Resource
-                v-on:add-to-current="current += $event"
+                v-if="status === 'ready'"
+                v-bind:resourceVal="val3"
+                v-on:add-to-current="addResource"
                 filename="mars-heat.png"
                 altText="Mars heat production symbol"
             ></Resource>
             <Resource
-                v-on:add-to-current="current += $event"
+                v-else
+                filename="mars-heat.png"
+                altText="Mars heat production symbol"
+            ></Resource>
+            <!-- ~~~~~~~~~~~~~~~~~~~` -->
+            <Resource
+                v-if="status === 'ready'"
+                v-bind:resourceVal="val4"
+                v-on:add-to-current="addResource"
+                filename="mars-energy.png"
+                altText="Mars energy production symbol"
+            ></Resource>
+            <Resource
+                v-else
                 filename="mars-energy.png"
                 altText="Mars energy production symbol"
             ></Resource>
         </div>
-        <div class="row single solid">
+        <div class="row single solid bottom">
             <ul>
                 <li>Won: {{ gamesWon }}</li>
                 <li>Lost: {{ gamesLost }}</li>
@@ -61,7 +91,27 @@ export default {
             currentColor: 'green',
             gameOver: false,
             ready: true,
+            val1: Math.floor(Math.random() * 11 + 1),
+            val2: Math.floor(Math.random() * 11 + 1),
+            val3: Math.floor(Math.random() * 11 + 1),
+            val4: Math.floor(Math.random() * 11 + 1),
         };
+    },
+    methods: {
+        addResource: function(event) {
+            this.current += event;
+        },
+        startNewGame: function() {
+            this.current = 0;
+            this.goal = Math.floor(Math.random() * 101 + 19);
+            this.val1 = Math.floor(Math.random() * 11 + 1);
+            this.val2 = Math.floor(Math.random() * 11 + 1);
+            this.val3 = Math.floor(Math.random() * 11 + 1);
+            this.val4 = Math.floor(Math.random() * 11 + 1);
+        },
+        resourceValue: function() {
+            return Math.floor(Math.random() * 11 + 1);
+        },
     },
     watch: {
         current: function() {
@@ -105,7 +155,16 @@ export default {
     background-color: #2c3e50;
     cursor: pointer;
 }
-
+.top {
+    -moz-box-shadow: inset 0 -6px 8px -4px #000000;
+    -webkit-box-shadow: inset 0 -6px 8px -4pxx #000000;
+    box-shadow: inset 0 -6px 8px -4px #000000;
+}
+.bottom {
+    -moz-box-shadow: inset 0 8px 6px -6px #000000;
+    -webkit-box-shadow: inset 0 8px 6px -6px #000000;
+    box-shadow: inset 0 8px 6px -6px #000000;
+}
 #goal {
     height: 86px;
 }
