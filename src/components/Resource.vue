@@ -3,7 +3,7 @@
         <img
             v-on:click="$emit('add-to-current', resourceVal)"
             :src="require(`@/assets/${filename}`)"
-            :alt="{ altText }"
+            :alt="altText"
         />
     </div>
 </template>
@@ -14,11 +14,6 @@ export default {
         filename: String,
         altText: String,
         resourceVal: Number,
-    },
-    data: function() {
-        return {
-            // resourceVal: Math.floor(Math.random() * 11 + 1),
-        };
     },
 };
 </script>

@@ -5,6 +5,7 @@ This project is an upgrade to a homework assignment from bootcamp. The original 
 The logic is simple and the game is pretty mindless, but this was a good exercise for practicing a few things:
 
 -   parent-child and child-parent component communication
+-   v-if and v-for
 -   flexbox
 -   ...and I like to think my UI skills have improved.
 

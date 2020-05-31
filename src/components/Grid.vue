@@ -4,66 +4,64 @@
             <p>Click here to start a new game</p>
         </div>
         <div class="row">
-            <Resource
-                v-if="status === 'ready'"
-                v-bind:resourceVal="val1"
-                v-on:add-to-current="addResource"
-                filename="mars-plants.png"
-                altText="Mars plant production symbol"
-            ></Resource>
-            <Resource
-                v-else
-                filename="mars-plants.png"
-                altText="Mars plant production symbol"
-            ></Resource>
-            <!-- ~~~~~~~~~~~~~~~ -->
-            <Resource
-                v-if="status === 'ready'"
-                v-bind:resourceVal="val2"
-                v-on:add-to-current="addResource"
-                filename="mars-titanium.png"
-                altText="Mars titanium production symbol"
-            ></Resource>
-            <Resource
-                v-else
-                filename="mars-titanium.png"
-                altText="Mars titanium production symbol"
-            ></Resource>
+            <template v-for="(resource, x) in row1">
+                <Resource
+                    :key="x"
+                    v-if="status === 'ready'"
+                    v-bind:resourceVal="resource.val"
+                    v-on:add-to-current="addResource"
+                    v-bind:filename="resource.filename"
+                    v-bind:altText="resource.altText"
+                ></Resource>
+                <Resource
+                    v-else
+                    :key="x"
+                    v-bind:filename="resource.filename"
+                    v-bind:altText="resource.altText"
+                ></Resource>
+            </template>
         </div>
         <div class="row single">
-            <div id="goal">
+            <div v-if="status === 'new'" id="goal"></div>
+            <div v-else id="goal">
                 <p>Goal: {{ goal }}</p>
-                <p v-bind:style="{ color: currentColor }">
+                <p
+                    v-if="status === 'ready'"
+                    v-bind:style="{ color: currentColor }"
+                >
                     Current: {{ current }}
+                </p>
+                <p
+                    v-else-if="status === 'won'"
+                    v-bind:style="{ color: currentColor }"
+                >
+                    Winner! {{ current }}
+                </p>
+                <p
+                    v-else-if="status === 'lost'"
+                    v-bind:style="{ color: currentColor }"
+                >
+                    Too bad.... {{ current }}
                 </p>
             </div>
         </div>
         <div class="row">
-            <Resource
-                v-if="status === 'ready'"
-                v-bind:resourceVal="val3"
-                v-on:add-to-current="addResource"
-                filename="mars-heat.png"
-                altText="Mars heat production symbol"
-            ></Resource>
-            <Resource
-                v-else
-                filename="mars-heat.png"
-                altText="Mars heat production symbol"
-            ></Resource>
-            <!-- ~~~~~~~~~~~~~~~~~~~` -->
-            <Resource
-                v-if="status === 'ready'"
-                v-bind:resourceVal="val4"
-                v-on:add-to-current="addResource"
-                filename="mars-energy.png"
-                altText="Mars energy production symbol"
-            ></Resource>
-            <Resource
-                v-else
-                filename="mars-energy.png"
-                altText="Mars energy production symbol"
-            ></Resource>
+            <template v-for="(resource, x) in row2">
+                <Resource
+                    :key="x"
+                    v-if="status === 'ready'"
+                    v-bind:resourceVal="resource.val"
+                    v-on:add-to-current="addResource"
+                    v-bind:filename="resource.filename"
+                    v-bind:altText="resource.altText"
+                ></Resource>
+                <Resource
+                    v-else
+                    :key="x"
+                    v-bind:filename="resource.filename"
+                    v-bind:altText="resource.altText"
+                ></Resource>
+            </template>
         </div>
         <div class="row single solid bottom">
             <ul>
@@ -83,18 +81,36 @@ export default {
     },
     data: function() {
         return {
-            goal: '',
-            current: '',
-            status: '',
+            goal: Number,
+            current: Number,
+            status: 'new',
             gamesWon: 0,
             gamesLost: 0,
             currentColor: 'green',
-            gameOver: false,
-            ready: true,
-            val1: Number,
-            val2: Number,
-            val3: Number,
-            val4: Number,
+            row1: [
+                {
+                    filename: 'mars-plants.png',
+                    altText: 'Mars plant production symbol',
+                    val: Math.floor(Math.random() * 11 + 1),
+                },
+                {
+                    filename: 'mars-titanium.png',
+                    altText: 'Mars titanium production symbol',
+                    val: Math.floor(Math.random() * 11 + 1),
+                },
+            ],
+            row2: [
+                {
+                    filename: 'mars-heat.png',
+                    altText: 'Mars heat production symbol',
+                    val: Math.floor(Math.random() * 11 + 1),
+                },
+                {
+                    filename: 'mars-energy.png',
+                    altText: 'Mars energy production symbol',
+                    val: Math.floor(Math.random() * 11 + 1),
+                },
+            ],
         };
     },
     methods: {
@@ -104,13 +120,13 @@ export default {
         startNewGame: function() {
             this.current = 0;
             this.goal = Math.floor(Math.random() * 101 + 19);
-            this.val1 = Math.floor(Math.random() * 11 + 1);
-            this.val2 = Math.floor(Math.random() * 11 + 1);
-            this.val3 = Math.floor(Math.random() * 11 + 1);
-            this.val4 = Math.floor(Math.random() * 11 + 1);
+            this.resetVals(this.row1);
+            this.resetVals(this.row2);
         },
-        resourceValue: function() {
-            return Math.floor(Math.random() * 11 + 1);
+        resetVals: function(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                arr[i].val = Math.floor(Math.random() * 11 + 1);
+            }
         },
     },
     watch: {
@@ -168,7 +184,6 @@ export default {
 #goal {
     height: 86px;
 }
-
 ul {
     list-style-type: none;
     padding: 0;
