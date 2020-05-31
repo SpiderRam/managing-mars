@@ -83,18 +83,18 @@ export default {
     },
     data: function() {
         return {
-            goal: Math.floor(Math.random() * 101 + 19),
-            current: 0,
-            status: 'ready',
+            goal: '',
+            current: '',
+            status: '',
             gamesWon: 0,
             gamesLost: 0,
             currentColor: 'green',
             gameOver: false,
             ready: true,
-            val1: Math.floor(Math.random() * 11 + 1),
-            val2: Math.floor(Math.random() * 11 + 1),
-            val3: Math.floor(Math.random() * 11 + 1),
-            val4: Math.floor(Math.random() * 11 + 1),
+            val1: Number,
+            val2: Number,
+            val3: Number,
+            val4: Number,
         };
     },
     methods: {

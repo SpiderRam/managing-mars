@@ -11,24 +11,8 @@
             >.
         </p>
         <p>
-            This text styling is also basically a rip off of the Vue "Hello
-            World" code created by the CLI.
-        </p>
-        <p>
-            And furthermore, this is a recycled homework assignment from my
-            coding bootcamp. Is there anything worth seeing here?
-        </p>
-        <p>
-            Well, if you saw the first one, you'd know this is a definite
-            improvement. Took me a minute to figure out that more is less in UI.
-        </p>
-        <p>
-            And the game is stupid but you could be wasting time far less
-            productively on the interwebs, so enjoy!
-        </p>
-        <p>
-            But seriously, if you haven't played the real game, get some friends
-            together and play it, you will not be sorry.
+            If you haven't played the real game, get some friends together and
+            try it, you will not be sorry.
         </p>
         <h4>Rules:</h4>
         <ul>
@@ -43,7 +27,6 @@
             </li>
             <li>Not all games are winnable.</li>
         </ul>
-        <p>Told you it was stupid.</p>
     </div>
 </template>
 
