@@ -11,3 +11,9 @@ I have worked with Vue a bit in the past, but it has been awhile and I've forgot
 Feel free to challenge my assertion that Terraforming Mars is the bomb. My cows will eat your plants.
 
 ![Elysium Board](src/assets/mars-elysium.jpg)
+
+# Development
+
+Run locally with `npm run serve`, and open [http://localhost:8080/managing-mars/](http://localhost:8080/managing-mars/)
+
+After pushing to master, deploy to GitHub pages with the command `npm run gh-pages-deploy`

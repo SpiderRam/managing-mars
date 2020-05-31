@@ -30,7 +30,7 @@
             But seriously, if you haven't played the real game, get some friends
             together and play it, you will not be sorry.
         </p>
-        <p>Rules:</p>
+        <h4>Rules:</h4>
         <ul>
             <li>You have a goal to reach, but not exceed.</li>
             <li>
@@ -42,8 +42,8 @@
                 the value is different.
             </li>
             <li>Not all games are winnable.</li>
-            <li>Told you it was stupid.</li>
         </ul>
+        <p>Told you it was stupid.</p>
     </div>
 </template>
 

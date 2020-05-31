@@ -1,6 +1,10 @@
 <template>
     <div id="wrapper">
-        <img :src="require(`@/assets/${filename}`)" :alt="{ altText }" />
+        <img
+            v-on:click="$emit('add-to-current', resourceVal)"
+            :src="require(`@/assets/${filename}`)"
+            :alt="{ altText }"
+        />
     </div>
 </template>
 
@@ -9,6 +13,11 @@ export default {
     props: {
         filename: String,
         altText: String,
+    },
+    data: function() {
+        return {
+            resourceVal: Math.floor(Math.random() * 11 + 1),
+        };
     },
 };
 </script>
